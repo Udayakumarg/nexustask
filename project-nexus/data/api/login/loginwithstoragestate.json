@@ -1,0 +1,10 @@
+{
+  "prod": {
+    "users": {
+      "admin": {
+        "username": "Udaya",
+        "password": "Password@123"
+      }
+    }
+  }
+}

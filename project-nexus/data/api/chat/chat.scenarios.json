@@ -1,0 +1,343 @@
+{
+  "prod":[
+  {
+    "name": "Leave application - English happy path @smoke",
+    "tags": ["happy-path", "leave", "english", "smoke"],
+    "initialRequest": "I would like to apply for leave",
+    "conversation": [
+      {
+        "jsonKey":          "employee",
+        "expectedIntent":   "ask_name",
+        "actualAiQuestion": "",
+        "userResponse":     "Alice"
+      },
+      {
+        "jsonKey":          "department",
+        "expectedIntent":   "ask_department",
+        "actualAiQuestion": "",
+        "userResponse":     "Engineering"
+      },
+      {
+        "jsonKey":          "manager",
+        "expectedIntent":   "ask_manager",
+        "actualAiQuestion": "",
+        "userResponse":     "Bob"
+      },
+      {
+        "jsonKey":          "leave_type",
+        "expectedIntent":   "ask_leave_type",
+        "actualAiQuestion": "",
+        "userResponse":     "Annual"
+      },
+      {
+        "jsonKey":          "start_date",
+        "expectedIntent":   "ask_start_date",
+        "actualAiQuestion": "",
+        "userResponse":     "16-Mar-2026"
+      },
+      {
+        "jsonKey":          "end_date",
+        "expectedIntent":   "ask_end_date",
+        "actualAiQuestion": "",
+        "userResponse":     "20-Mar-2026"
+      },
+      {
+        "jsonKey":          "reason",
+        "expectedIntent":   "ask_reason",
+        "actualAiQuestion": "",
+        "userResponse":     "Family vacation"
+      }
+    ],
+    "finalJson": {
+      "employee":   "Alice",
+      "department": "Engineering",
+      "manager":    "Bob",
+      "leave_type": "Annual",
+      "start_date": "16-Mar-2026",
+      "end_date":   "20-Mar-2026",
+      "reason":     "Family vacation",
+      "status":     "pending"
+    },
+    "expectedReferenceIdPrefix": "LVE"
+  },
+
+  {
+    "name": "Leave application - bulk info in first message @smoke",
+    "tags": ["happy-path", "leave", "bulk-input"],
+    "initialRequest": "I want leave. Name Alice, Engineering dept, manager Bob, annual leave from 16-Mar-2026 to 20-Mar-2026, reason family vacation",
+    "conversation": [],
+    "finalJson": {
+      "employee":   "Alice",
+      "department": "Engineering",
+      "manager":    "Bob",
+      "leave_type": "Annual",
+      "start_date": "16-Mar-2026",
+      "end_date":   "20-Mar-2026",
+      "status":     "pending"
+    },
+    "expectedReferenceIdPrefix": "LVE"
+  },
+
+  {
+    "name": "Leave application - edit dates after NO",
+    "tags": ["edit", "leave", "english"],
+    "initialRequest": "I want leave. Alice, Engineering, manager Bob, annual, 16-Mar-2026 to 20-Mar-2026, vacation",
+    "conversation": [],
+    "edit": {
+      "message": "update start date to 1st May and end date to 30th May"
+    },
+    "finalJson": {
+      "employee":   "Alice",
+      "department": "Engineering",
+      "manager":    "Bob",
+      "leave_type": "Annual",
+      "start_date": "01-May-2026",
+      "end_date":   "30-May-2026",
+      "status":     "pending"
+    },
+    "expectedReferenceIdPrefix": "LVE"
+  },
+
+  {
+    "name": "Leave application - Arabic happy path",
+    "tags": ["happy-path", "leave", "arabic"],
+    "initialRequest": "أرغب في تقديم طلب إجازة",
+    "conversation": [
+      {
+        "jsonKey":          "employee",
+        "expectedIntent":   "ask_name",
+        "actualAiQuestion": "",
+        "userResponse":     "هيرماني"
+      },
+      {
+        "jsonKey":          "department",
+        "expectedIntent":   "ask_department",
+        "actualAiQuestion": "",
+        "userResponse":     "قسم تكنولوجيا المعلومات"
+      },
+      {
+        "jsonKey":          "manager",
+        "expectedIntent":   "ask_manager",
+        "actualAiQuestion": "",
+        "userResponse":     "ياسر عرفات"
+      },
+      {
+        "jsonKey":          "leave_type",
+        "expectedIntent":   "ask_leave_type",
+        "actualAiQuestion": "",
+        "userResponse":     "الإجازة السنوية"
+      },
+      {
+        "jsonKey":          "start_date",
+        "expectedIntent":   "ask_start_date",
+        "actualAiQuestion": "",
+        "userResponse":     "16-Mar-2026"
+      },
+      {
+        "jsonKey":          "end_date",
+        "expectedIntent":   "ask_end_date",
+        "actualAiQuestion": "",
+        "userResponse":     "16-Apr-2026"
+      },
+      {
+        "jsonKey":          "reason",
+        "expectedIntent":   "ask_reason",
+        "actualAiQuestion": "",
+        "userResponse":     "قضاء وقت مع العائلة"
+      }
+    ],
+    "finalJson": {
+      "employee":   "هيرماني",
+      "department": "قسم تكنولوجيا المعلومات",
+      "manager":    "ياسر عرفات",
+      "leave_type": "Annual",
+      "start_date": "16-Mar-2026",
+      "end_date":   "16-Apr-2026",
+      "reason":     "قضاء وقت مع العائلة",
+      "status":     "pending"
+    },
+    "expectedReferenceIdPrefix": "LVE"
+  },
+
+  {
+    "name": "Employee onboarding - last name split regression",
+    "tags": ["regression", "employee", "last-name-bug"],
+    "initialRequest": "I need to onboard a new employee. Full name is John Smith.",
+    "conversation": [
+      {
+        "jsonKey":          "email",
+        "expectedIntent":   "ask_email",
+        "actualAiQuestion": "",
+        "userResponse":     "john.smith@company.com"
+      },
+      {
+        "jsonKey":          "phone",
+        "expectedIntent":   "ask_phone",
+        "actualAiQuestion": "",
+        "userResponse":     "0501234567"
+      },
+      {
+        "jsonKey":          "department",
+        "expectedIntent":   "ask_department",
+        "actualAiQuestion": "",
+        "userResponse":     "Engineering"
+      },
+      {
+        "jsonKey":          "designation",
+        "expectedIntent":   "ask_designation",
+        "actualAiQuestion": "",
+        "userResponse":     "Senior Engineer"
+      },
+      {
+        "jsonKey":          "manager",
+        "expectedIntent":   "ask_manager",
+        "actualAiQuestion": "",
+        "userResponse":     "Sarah"
+      },
+      {
+        "jsonKey":          "joining_date",
+        "expectedIntent":   "ask_joining_date",
+        "actualAiQuestion": "",
+        "userResponse":     "17-Mar-2026"
+      },
+      {
+        "jsonKey":          "employment_type",
+        "expectedIntent":   "ask_employment_type",
+        "actualAiQuestion": "",
+        "userResponse":     "Full-time"
+      },
+      {
+        "jsonKey":          "work_location",
+        "expectedIntent":   "ask_work_location",
+        "actualAiQuestion": "",
+        "userResponse":     "Abu Dhabi HQ"
+      }
+    ],
+    "finalJson": {
+      "first_name":      "John",
+      "last_name":       "Smith",
+      "email":           "john.smith@company.com",
+      "phone":           "0501234567",
+      "department":      "Engineering",
+      "designation":     "Senior Engineer",
+      "manager":         "Sarah",
+      "joining_date":    "17-Mar-2026",
+      "employment_type": "Full-time",
+      "work_location":   "Abu Dhabi HQ",
+      "status":          "active"
+    },
+    "expectedReferenceIdPrefix": "EMP"
+  },
+
+  {
+    "name": "Leave application - negative invalid date format",
+    "tags": ["negative", "leave", "date-validation"],
+    "initialRequest": "Leave request. Alice, Engineering, Bob, Annual leave",
+    "conversation": [
+      {
+        "jsonKey":          "start_date",
+        "expectedIntent":   "ask_start_date",
+        "actualAiQuestion": "",
+        "userResponse":     "17/01/1986"
+      },
+      {
+        "jsonKey":          "start_date_retry",
+        "expectedIntent":   "reject_invalid",
+        "actualAiQuestion": "",
+        "userResponse":     "16-Mar-2026"
+      },
+      {
+        "jsonKey":          "end_date",
+        "expectedIntent":   "ask_end_date",
+        "actualAiQuestion": "",
+        "userResponse":     "20-Mar-2026"
+      },
+      {
+        "jsonKey":          "reason",
+        "expectedIntent":   "ask_reason",
+        "actualAiQuestion": "",
+        "userResponse":     "Medical checkup"
+      }
+    ],
+    "finalJson": {
+      "employee":   "Alice",
+      "department": "Engineering",
+      "leave_type": "Annual",
+      "start_date": "16-Mar-2026",
+      "end_date":   "20-Mar-2026",
+      "status":     "pending"
+    },
+    "expectedReferenceIdPrefix": "LVE"
+  },
+
+  {
+    "name": "Leave application - long conversation LONGCONV regression",
+    "tags": ["regression", "longconv", "leave"],
+    "initialRequest": "I want to apply for leave",
+    "conversation": [
+      { "jsonKey": "employee",   "expectedIntent": "ask_name",       "actualAiQuestion": "", "userResponse": "Alice"         },
+      { "jsonKey": "department", "expectedIntent": "ask_department",  "actualAiQuestion": "", "userResponse": "Engineering"   },
+      { "jsonKey": "manager",    "expectedIntent": "ask_manager",     "actualAiQuestion": "", "userResponse": "Bob"           },
+      { "jsonKey": "leave_type", "expectedIntent": "ask_leave_type",  "actualAiQuestion": "", "userResponse": "Annual"        },
+      { "jsonKey": "start_date", "expectedIntent": "ask_start_date",  "actualAiQuestion": "", "userResponse": "16-Mar-2026"   },
+      { "jsonKey": "end_date",   "expectedIntent": "ask_end_date",    "actualAiQuestion": "", "userResponse": "20-Mar-2026"   },
+      { "jsonKey": "reason",     "expectedIntent": "ask_reason",      "actualAiQuestion": "", "userResponse": "Family trip"   }
+    ],
+    "finalJson": {
+      "employee":   "Alice",
+      "manager":    "Bob",
+      "department": "Engineering",
+      "leave_type": "Annual",
+      "start_date": "16-Mar-2026",
+      "end_date":   "20-Mar-2026",
+      "reason":     "Family trip",
+      "status":     "pending"
+    },
+    "expectedReferenceIdPrefix": "LVE"
+  },
+
+  {
+    "name": "IT support - urgent priority mapping",
+    "tags": ["happy-path", "it-ticket", "priority"],
+    "initialRequest": "My laptop is broken and I cannot work. Alice, Engineering.",
+    "conversation": [
+      {
+        "jsonKey":          "device",
+        "expectedIntent":   "ask_device",
+        "actualAiQuestion": "",
+        "userResponse":     "Laptop"
+      },
+      {
+        "jsonKey":          "description",
+        "expectedIntent":   "ask_description",
+        "actualAiQuestion": "",
+        "userResponse":     "Screen went black after Windows update, completely unresponsive"
+      }
+    ],
+    "finalJson": {
+      "employee":   "Alice",
+      "department": "Engineering",
+      "device":     "Laptop",
+      "priority":   "High",
+      "status":     "open"
+    },
+    "expectedReferenceIdPrefix": "INC"
+  },
+
+  {
+    "name": "Voice stub - STT transcription errors handled",
+    "tags": ["voice", "stub", "negative"],
+    "initialRequest": "I wunt too aply for leev my naim is Alic maneger is Bobb",
+    "conversation": [
+      {
+        "jsonKey":          "department",
+        "expectedIntent":   "ask_any_field",
+        "actualAiQuestion": "",
+        "userResponse":     "Inginearing departmant"
+      }
+    ],
+    "finalJson": {},
+    "notes": "Tests R8 — voice STT errors. No finalJson assert — just checking graceful handling"
+  }
+]
+}

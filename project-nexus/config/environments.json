@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "timeout": 50000,
+    "retries": 1,
+    "autoLaunch": false
+  },
+  "dev": {
+    "baseUrl": "https://dev.nexus-ai-wn4h.onrender.com",
+    "authStorage": {
+      "enabled": true,
+      "provider": "NexusLogin"
+    }
+  },
+  "qa": {
+    "baseUrl": "https://qa.nexus-ai-wn4h.onrender.com",
+    "authStorage": {
+      "enabled": true,
+      "provider": "NexusLogin"
+    }
+  },
+  "prod": {
+    "baseUrl": "https://nexus-ai-wn4h.onrender.com",
+    "apiUrl": "https://nexus-ai-wn4h.onrender.com",
+    "authStorage": {
+      "enabled": false,
+      "validityMinutes": 30,
+      "provider": "NexusLogin"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "intentMap": {
+    "ask_name":           "Is the AI asking for the user's name?",
+    "ask_department":     "Is the AI asking for the user's department?",
+    "ask_manager":        "Is the AI asking for the manager name?",
+    "ask_leave_type":     "Is the AI asking for the type of leave?",
+    "ask_start_date":     "Is the AI asking for the leave start date?",
+    "ask_end_date":       "Is the AI asking for the leave end date?",
+    "ask_duration":       "Is the AI asking for the number of days or duration of leave?",
+    "ask_reason":         "Is the AI asking for the reason for leave?",
+    "ask_any_field":      "Is the AI asking for any missing form field?",
+    "ask_what_to_change": "Is the AI asking what the user would like to change?",
+    "confirm_submission": "Is the AI showing a completed form summary asking for YES or NO?",
+    "reject_invalid":     "Is the AI rejecting an invalid value and asking again?",
+    "submission_success": "Is the AI confirming successful submission with a reference ID?"
+  },
+  "intentAliases": {
+    "ask_duration": "ask_end_date"
+  }
+}

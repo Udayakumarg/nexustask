@@ -1,0 +1,64 @@
+{
+  "prod":{
+    "username": "demo",
+    "password": "demo1234",
+    "name": "Leave application - English happy path @smoke",
+    "tags": ["happy-path", "leave", "english", "smoke"],
+    "initialRequest": "I would like to apply for leave",
+    "conversation": [
+      {
+        "jsonKey":          "employee",
+        "expectedIntent":   "ask_name",
+        "actualAiQuestion": "Could you please provide your name for the leave application?",
+        "userResponse":     "Alice"
+      },
+      {
+        "jsonKey":          "department",
+        "expectedIntent":   "ask_department",
+        "actualAiQuestion": "Thank you, Alice. What is the name of your department?",
+        "userResponse":     "Engineering"
+      },
+      {
+        "jsonKey":          "manager",
+        "expectedIntent":   "ask_manager",
+        "actualAiQuestion": "Great! Could you please tell your manager name.",
+        "userResponse":     "Bob"
+      },
+      {
+        "jsonKey":          "leave_type",
+        "expectedIntent":   "ask_leave_type",
+        "actualAiQuestion": "let me know the type of leave you are applying for",
+        "userResponse":     "Annual"
+      },
+      {
+        "jsonKey":          "start_date",
+        "expectedIntent":   "ask_start_date",
+        "actualAiQuestion": "Could you please provide the start date for your leave?",
+        "userResponse":     "16-Mar-2026"
+      },
+      {
+        "jsonKey":          "end_date",
+        "expectedIntent":   "ask_end_date",
+        "actualAiQuestion": "How many days of leave are you planning to take?",
+        "userResponse":     "20-Mar-2026"
+      },
+      {
+        "jsonKey":          "reason",
+        "expectedIntent":   "ask_reason",
+        "actualAiQuestion": "Could you please provide the reason for your leave",
+        "userResponse":     "Family vacation"
+      }
+    ],
+    "finalJson": {
+      "employee":   "Alice",
+      "department": "Engineering",
+      "manager":    "Bob",
+      "leave_type": "Annual",
+      "start_date": "16-Mar-2026",
+      "end_date":   "20-Mar-2026",
+      "reason":     "Family vacation",
+      "status":     "pending"
+    },
+    "expectedReferenceIdPrefix": "LVE"
+  }
+}

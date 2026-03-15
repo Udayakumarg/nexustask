@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "strict": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "types": [
+      "@playwright/test",
+      "simple-playwright-framework",
+      "node"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@project-nexus/*": [
+        "./*"
+      ],
+      "@project-nexus/auth": [
+        "auth/index.ts"
+      ]
+    },
+    "outDir": "dist"
+  },
+  "include": [
+    "tests/**/*.ts",
+    "global.d.ts"
+  ]
+}
