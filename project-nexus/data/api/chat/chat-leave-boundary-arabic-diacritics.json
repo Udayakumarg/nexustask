@@ -1,0 +1,125 @@
+{
+  "prod": [
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Boundary - Arabic name with full diacritics @boundary @arabic @diacritics",
+      "tags": ["boundary", "arabic", "diacritics"],
+      "maxTurns": 12,
+      "notes": "Employee name with full Arabic diacritics (تشكيل). Tests that diacritics are preserved exactly in free_text fields — R_ARABIC_JSON fix validation.",
+      "initialRequest": "أُرِيدُ تَقْدِيمَ طَلَبِ إِجَازَةٍ سَنَوِيَّةٍ",
+      "inputJson": {
+        "employee":   "هِيرْمَانِي",
+        "department": "تِقْنِيَّةُ الْمَعْلُومَاتِ",
+        "manager":    "يَاسِرُ عَرَفَات",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "قَضَاءُ وَقْتٍ مَعَ الْعَائِلَةِ",
+        "status":     "pending"
+      },
+      "finalJson": {
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Boundary - Arabic with mixed numerals Eastern and Western @boundary @arabic @numerals",
+      "tags": ["boundary", "arabic", "numerals"],
+      "maxTurns": 12,
+      "notes": "Arabic Eastern numerals (٢٠ ٢٦) mixed with Western numerals in dates. Tests numeral normalization and date parsing in bilingual context.",
+      "initialRequest": "أريد إجازة سنوية. هيرماني، تكنولوجيا المعلومات، ياسر عرفات",
+      "inputJson": {
+        "leave_type": "Annual",
+        "start_date": "٢٠-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "إجازة عائلية",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Boundary - Arabic Tatweel (character extension) in name @boundary @arabic @tatweel",
+      "tags": ["boundary", "arabic", "tatweel"],
+      "maxTurns": 12,
+      "notes": "Arabic name contains Tatweel (ـ) character used for text stretching. Tests that extended Arabic characters are handled without breaking JSON formation.",
+      "initialRequest": "طلب إجازة سنوية",
+      "inputJson": {
+        "employee":   "هـيـرمـاني",
+        "department": "تكنولوجيا المعلومات",
+        "manager":    "ياسر عرفات",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "قضاء وقت مع الأهل",
+        "status":     "pending"
+      },
+      "finalJson": {
+        "employee":   "هـيـرمـاني",
+        "department": "تكنولوجيا المعلومات",
+        "manager":    "ياسر عرفات",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "قضاء وقت مع الأهل",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Boundary - Arabic month names in date @boundary @arabic @date",
+      "tags": ["boundary", "arabic", "date"],
+      "maxTurns": 12,
+      "notes": "User provides date using Arabic month names. AI should convert to DD-MMM-YYYY format. Tests multilingual date parsing.",
+      "initialRequest": "أريد إجازة سنوية. هيرماني، تكنولوجيا المعلومات، ياسر عرفات",
+      "inputJson": {
+        "leave_type": "Annual",
+        "start_date": "20 مارس 2026",
+        "end_date":   "20 أبريل 2026",
+        "reason":     "إجازة عائلية",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Boundary - Arabic reason with emoji @boundary @arabic @emoji",
+      "tags": ["boundary", "arabic", "emoji"],
+      "maxTurns": 12,
+      "notes": "Arabic reason text with emoji characters. Tests that emoji are preserved in free_text fields without corruption.",
+      "initialRequest": "أريد إجازة سنوية. هيرماني، تكنولوجيا المعلومات، ياسر عرفات، إجازة سنوية",
+      "inputJson": {
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "إجازة عائلية مع الأطفال 👨‍👩‍👧‍👦 رحلة إلى دبي 🌴",
+        "status":     "pending"
+      },
+      "finalJson": {
+        "employee":   "هيرماني",
+        "department": "تكنولوجيا المعلومات",
+        "manager":    "ياسر عرفات",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "إجازة عائلية مع الأطفال 👨‍👩‍👧‍👦 رحلة إلى دبي 🌴",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    }
+  ]
+}

@@ -22,7 +22,7 @@
     "baseUrl": "https://nexus-ai-wn4h.onrender.com",
     "apiUrl": "https://nexus-ai-wn4h.onrender.com",
     "authStorage": {
-      "enabled": false,
+      "enabled": true,
       "validityMinutes": 30,
       "provider": "NexusLogin"
     }

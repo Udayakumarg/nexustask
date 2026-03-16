@@ -1,0 +1,71 @@
+{
+  "prod": [
+    {
+      "users": {
+        "admin": {
+          "username": "demo",
+          "password": "demo1234"
+        }
+      },
+      "name": "UI - Leave happy path English @smoke @ui @english",
+      "tags": ["smoke", "ui", "english", "happy-path"],
+      "maxTurns": 15,
+      "initialRequest": "I would like to apply for leave",
+      "inputJson": {
+        "employee":   "Alice",
+        "department": "Engineering",
+        "manager":    "Bob",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "Family vacation",
+        "status":     "pending"
+      },
+      "finalJson": {
+        "employee":   "Alice",
+        "department": "Engineering",
+        "manager":    "Bob",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "Family vacation",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    },
+
+    {
+      "users": {
+        "admin": {
+          "username": "demo",
+          "password": "demo1234"
+        }
+      },
+      "name": "UI - Leave happy path Arabic @smoke @ui @arabic",
+      "tags": ["smoke", "ui", "arabic", "happy-path"],
+      "maxTurns": 15,
+      "initialRequest": "أريد تقديم طلب إجازة",
+      "inputJson": {
+        "employee":   "هيرماني",
+        "department": "تكنولوجيا المعلومات",
+        "manager":    "ياسر عرفات",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "قضاء وقت مع العائلة",
+        "status":     "pending"
+      },
+      "finalJson": {
+        "employee":   "هيرماني",
+        "department": "تكنولوجيا المعلومات",
+        "manager":    "ياسر عرفات",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "قضاء وقت مع العائلة",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "prod": [
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Negative - Manager as pronoun 'my manager' English @negative @validation @english",
+      "tags": ["negative", "validation", "english"],
+      "maxTurns": 8,
+      "notes": "prompt_hint explicitly blocks 'my manager' — must be a real person name. Tests server-side validation rule. Key D1 evidence for field validation.",
+      "initialRequest": "Leave application. Alice, Engineering",
+      "inputJson": {
+        "manager":    "my manager",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "Vacation",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Negative - Manager as pronoun 'him' English @negative @validation @english",
+      "tags": ["negative", "validation", "english"],
+      "maxTurns": 8,
+      "notes": "User says 'him' as manager name. Must be rejected — only real person names accepted.",
+      "initialRequest": "I want leave. Alice, Engineering, manager is him",
+      "inputJson": {
+        "leave_type": "Sick",
+        "start_date": "20-Mar-2026",
+        "end_date":   "25-Mar-2026",
+        "reason":     "Illness",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Negative - Manager as 'boss' English @negative @validation @english",
+      "tags": ["negative", "validation", "english"],
+      "maxTurns": 8,
+      "notes": "User provides a role title instead of a name. AI must reject and ask for actual person name.",
+      "initialRequest": "Leave request. Alice, Engineering",
+      "inputJson": {
+        "manager":    "my boss",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "Personal",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Negative - Manager as pronoun Arabic @negative @validation @arabic",
+      "tags": ["negative", "validation", "arabic"],
+      "maxTurns": 8,
+      "notes": "Arabic user says 'مديري' (my manager) instead of a real name. AI must reject in Arabic and ask for real person name.",
+      "initialRequest": "أريد تقديم طلب إجازة. هيرماني، تكنولوجيا المعلومات",
+      "inputJson": {
+        "manager":    "مديري",
+        "leave_type": "سنوية",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "إجازة عائلية",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Negative - Manager as 'هو' (him) Arabic @negative @validation @arabic",
+      "tags": ["negative", "validation", "arabic"],
+      "maxTurns": 8,
+      "notes": "Arabic pronoun 'هو' (him) used as manager name. Must be rejected with Arabic error message.",
+      "initialRequest": "طلب إجازة. هيرماني، قسم تكنولوجيا المعلومات، المدير هو",
+      "inputJson": {
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "قضاء وقت مع العائلة",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    }
+  ]
+}

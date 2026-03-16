@@ -1,0 +1,127 @@
+{
+  "prod": [
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Negative - Invalid date format DD/MM/YYYY English @negative @date @english",
+      "tags": ["negative", "date", "english"],
+      "maxTurns": 8,
+      "notes": "R_TEMPORAL evidence — user provides date in DD/MM/YYYY format. AI must reject and re-ask in DD-MMM-YYYY. Tests date validation rule from prompt_hints.",
+      "initialRequest": "I want annual leave. My name is Alice, department Engineering, manager Bob",
+      "inputJson": {
+        "leave_type": "Annual",
+        "start_date": "17/01/2026",
+        "end_date":   "20-Mar-2026",
+        "reason":     "Medical checkup",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Negative - Invalid date format MM-DD-YYYY English @negative @date @english",
+      "tags": ["negative", "date", "english"],
+      "maxTurns": 8,
+      "notes": "American date format MM-DD-YYYY should be rejected. AI must ask for DD-MMM-YYYY.",
+      "initialRequest": "Leave request. Alice, Engineering, Bob, Annual leave",
+      "inputJson": {
+        "leave_type": "Annual",
+        "start_date": "03-20-2026",
+        "end_date":   "04-20-2026",
+        "reason":     "Family vacation",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Negative - Past date as start date English @negative @date @english",
+      "tags": ["negative", "date", "english"],
+      "maxTurns": 8,
+      "notes": "Start date in 2020 — clearly in the past. AI should warn or reject. Tests temporal awareness after R_TEMPORAL fix.",
+      "initialRequest": "Apply for leave. Alice, Engineering, Bob, Annual",
+      "inputJson": {
+        "leave_type": "Annual",
+        "start_date": "01-Jan-2020",
+        "end_date":   "10-Jan-2020",
+        "reason":     "Old vacation",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Negative - Annual leave insufficient notice English @negative @date @english",
+      "tags": ["negative", "date", "english", "notice"],
+      "maxTurns": 8,
+      "notes": "Annual leave requires minimum 2 working days notice per prompt_hint. Start date is too soon. AI must warn user — key D1 evidence for minimum notice rule.",
+      "initialRequest": "I want annual leave starting tomorrow. Alice, Engineering, Bob",
+      "inputJson": {
+        "leave_type": "Annual",
+        "end_date":   "22-Mar-2026",
+        "reason":     "Personal",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Negative - End date before start date English @negative @date @english",
+      "tags": ["negative", "date", "english"],
+      "maxTurns": 8,
+      "notes": "End date is earlier than start date — impossible date range. AI must detect and reject this logical error.",
+      "initialRequest": "Leave application. Alice, Engineering, Bob, Annual",
+      "inputJson": {
+        "leave_type": "Annual",
+        "start_date": "20-Apr-2026",
+        "end_date":   "20-Mar-2026",
+        "reason":     "Vacation",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Negative - Invalid date format Arabic @negative @date @arabic",
+      "tags": ["negative", "date", "arabic"],
+      "maxTurns": 8,
+      "notes": "Arabic user provides date in wrong format. AI must reject in Arabic and ask for DD-MMM-YYYY. Tests bilingual date validation.",
+      "initialRequest": "أريد تقديم طلب إجازة. اسمي هيرماني، قسم تكنولوجيا المعلومات، مديري ياسر عرفات",
+      "inputJson": {
+        "leave_type": "الإجازة السنوية",
+        "start_date": "20/03/2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "قضاء وقت مع العائلة",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Negative - Insufficient notice Arabic @negative @date @arabic",
+      "tags": ["negative", "date", "arabic", "notice"],
+      "maxTurns": 8,
+      "notes": "Arabic user requests annual leave with insufficient notice. Warning must be delivered in Arabic.",
+      "initialRequest": "أريد إجازة سنوية من الغد. هيرماني، تكنولوجيا المعلومات، ياسر عرفات",
+      "inputJson": {
+        "leave_type": "سنوية",
+        "end_date":   "25-Mar-2026",
+        "reason":     "شؤون شخصية",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    }
+  ]
+}

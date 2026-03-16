@@ -1,14 +1,25 @@
-import 'dotenv/config';
-import { defineConfig } from '@playwright/test';
+import "dotenv/config";
+import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
-  testDir: './tests',
-  timeout: 120 * 1000, // 1 minute per test
-  reporter: [['html']],
-  use: {
-    // keep Playwright's own options here
-  },
+  testDir: "./tests",
+  timeout: 120 * 1000,
+  reporter: [
+    ["html"],
+    ["list"], // ← shows retry attempts inline in terminal
+  ],
+  projects: [
+    {
+      name: "api",
+      testMatch: "**/api/**/*.spec.ts",
+      use: {},
+    },
+    {
+      name: "ui",
+      testMatch: "**/ui/**/*.spec.ts",
+      use: { browserName: "chromium" },
+    },
+  ],
 });
 
-// ✅ Default environment set to "prod"
 process.env.TEST_ENV = process.env.TEST_ENV || "prod";

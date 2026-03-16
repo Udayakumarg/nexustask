@@ -1,0 +1,118 @@
+{
+  "prod": [
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Boundary - All fields in first message English @boundary @bulk @english",
+      "tags": ["boundary", "bulk", "english", "smoke"],
+      "maxTurns": 3,
+      "notes": "All 7 required fields provided in initialRequest. AI should extract all fields immediately and go straight to confirmation — 0 conversation turns. Tests CORE RULE 1: extract any field values from first message immediately.",
+      "initialRequest": "I want to apply for annual leave. My name is Alice, department Engineering, manager Bob, from 20-Mar-2026 to 20-Apr-2026, reason is family vacation",
+      "inputJson": {
+        "employee":   "Alice",
+        "department": "Engineering",
+        "manager":    "Bob",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "family vacation",
+        "status":     "pending"
+      },
+      "finalJson": {
+        "employee":   "Alice",
+        "department": "Engineering",
+        "manager":    "Bob",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "family vacation",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Boundary - Partial fields in first message 3 of 7 English @boundary @bulk @english",
+      "tags": ["boundary", "bulk", "english"],
+      "maxTurns": 10,
+      "notes": "3 fields provided upfront — employee, department, leave_type. AI should extract these and ask for remaining 4. Tests partial extraction.",
+      "initialRequest": "Annual leave for Alice from Engineering department",
+      "inputJson": {
+        "manager":    "Bob",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "Family vacation",
+        "status":     "pending"
+      },
+      "finalJson": {
+        "employee":   "Alice",
+        "department": "Engineering",
+        "manager":    "Bob",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "Family vacation",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Boundary - All fields in first message Arabic @boundary @bulk @arabic",
+      "tags": ["boundary", "bulk", "arabic"],
+      "maxTurns": 3,
+      "notes": "All fields in Arabic in first message. AI should extract immediately and confirm. Tests Arabic bulk extraction — key bilingual boundary case.",
+      "initialRequest": "أريد إجازة سنوية. اسمي هيرماني، قسم تكنولوجيا المعلومات، مديري ياسر عرفات، من 20-Mar-2026 إلى 20-Apr-2026، السبب قضاء وقت مع العائلة",
+      "inputJson": {
+        "employee":   "هيرماني",
+        "department": "تكنولوجيا المعلومات",
+        "manager":    "ياسر عرفات",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "قضاء وقت مع العائلة",
+        "status":     "pending"
+      },
+      "finalJson": {
+        "employee":   "هيرماني",
+        "department": "تكنولوجيا المعلومات",
+        "manager":    "ياسر عرفات",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "قضاء وقت مع العائلة",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Boundary - Mixed Arabic English bulk input @boundary @bulk @arabic @mixed",
+      "tags": ["boundary", "bulk", "arabic", "mixed"],
+      "maxTurns": 5,
+      "notes": "Fields mixed across Arabic and English in first message — common UAE government user pattern. Tests code-switching bulk extraction.",
+      "initialRequest": "Annual leave request — اسمي Alice، department Engineering، manager Bob، من 20-Mar-2026 إلى 20-Apr-2026",
+      "inputJson": {
+        "reason":     "Family vacation",
+        "status":     "pending"
+      },
+      "finalJson": {
+        "employee":   "Alice",
+        "department": "Engineering",
+        "manager":    "Bob",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "Family vacation",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    }
+  ]
+}

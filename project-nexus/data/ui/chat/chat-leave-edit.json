@@ -1,0 +1,73 @@
+{
+  "prod": [
+    {
+      "users": {
+        "admin": {
+          "username": "demo",
+          "password": "demo1234"
+        }
+      },
+      "name": "UI - Leave edit flow English @smoke @ui @english @edit",
+      "tags": ["smoke", "ui", "english", "edit"],
+      "maxTurns": 15,
+      "initialRequest": "I would like to apply for leave",
+      "inputJson": {
+        "employee":   "Alice",
+        "department": "Engineering",
+        "manager":    "Bob",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "Family vacation",
+        "status":     "pending"
+      },
+      "editJson": "Please change start date to 25-Mar-2026 and end date to 25-Apr-2026",
+      "finalJson": {
+        "employee":   "Alice",
+        "department": "Engineering",
+        "manager":    "Bob",
+        "leave_type": "Annual",
+        "start_date": "25-Mar-2026",
+        "end_date":   "25-Apr-2026",
+        "reason":     "Family vacation",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    },
+
+    {
+      "users": {
+        "admin": {
+          "username": "demo",
+          "password": "demo1234"
+        }
+      },
+      "name": "UI - Leave edit flow Arabic @smoke @ui @arabic @edit",
+      "tags": ["smoke", "ui", "arabic", "edit"],
+      "maxTurns": 15,
+      "initialRequest": "أريد تقديم طلب إجازة",
+      "inputJson": {
+        "employee":   "هيرماني",
+        "department": "تكنولوجيا المعلومات",
+        "manager":    "ياسر عرفات",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "قضاء وقت مع العائلة",
+        "status":     "pending"
+      },
+      "editJson": "من فضلك غير تاريخ البداية إلى 25-Mar-2026 وتاريخ النهاية إلى 25-Apr-2026",
+      "finalJson": {
+        "employee":   "هيرماني",
+        "department": "تكنولوجيا المعلومات",
+        "manager":    "ياسر عرفات",
+        "leave_type": "Annual",
+        "start_date": "25-Mar-2026",
+        "end_date":   "25-Apr-2026",
+        "reason":     "قضاء وقت مع العائلة",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    }
+  ]
+}

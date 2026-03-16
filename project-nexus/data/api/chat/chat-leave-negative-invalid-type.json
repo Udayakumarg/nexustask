@@ -1,0 +1,106 @@
+{
+  "prod": [
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Negative - Invalid leave type 'maternity' English @negative @enum @english",
+      "tags": ["negative", "enum", "english"],
+      "maxTurns": 8,
+      "notes": "Maternity leave is not in the enum. AI must reject and list valid options: Annual, Sick, Emergency, Compassionate, Unpaid.",
+      "initialRequest": "I want to apply for leave. Alice, Engineering, Bob",
+      "inputJson": {
+        "leave_type": "maternity",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Jun-2026",
+        "reason":     "Baby",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Negative - Invalid leave type 'paternity' English @negative @enum @english",
+      "tags": ["negative", "enum", "english"],
+      "maxTurns": 8,
+      "notes": "Paternity leave not in enum. AI must reject and offer valid alternatives.",
+      "initialRequest": "Leave request. Alice, Engineering, Bob",
+      "inputJson": {
+        "leave_type": "paternity",
+        "start_date": "20-Mar-2026",
+        "end_date":   "27-Mar-2026",
+        "reason":     "New baby",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Negative - Invalid leave type random string English @negative @enum @english",
+      "tags": ["negative", "enum", "english"],
+      "maxTurns": 8,
+      "notes": "Completely invalid leave type string. AI must reject and ask for valid enum value.",
+      "initialRequest": "I want xyz leave. Alice, Engineering, Bob",
+      "inputJson": {
+        "leave_type": "xyz",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "Personal",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Negative - Invalid leave type Arabic not in enum @negative @enum @arabic",
+      "tags": ["negative", "enum", "arabic"],
+      "maxTurns": 8,
+      "notes": "Arabic leave type not in field_mappings. AI must reject and list valid Arabic options.",
+      "initialRequest": "أريد تقديم طلب إجازة. هيرماني، تكنولوجيا المعلومات، ياسر عرفات",
+      "inputJson": {
+        "leave_type": "إجازة أمومة",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Jun-2026",
+        "reason":     "ولادة",
+        "status":     "pending"
+      },
+      "finalJson": {}
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Negative - R_ARABIC_JSON enum stored in Arabic regression @negative @enum @arabic @regression",
+      "tags": ["negative", "enum", "arabic", "regression"],
+      "maxTurns": 12,
+      "notes": "Regression test for R_ARABIC_JSON bug. User provides Arabic leave type — final JSON must store English enum value 'Annual' not Arabic 'الإجازة السنوية'. This was a production bug fixed by buildJsonFormationRules().",
+      "initialRequest": "أريد تقديم طلب إجازة سنوية",
+      "inputJson": {
+        "employee":   "هيرماني",
+        "department": "تكنولوجيا المعلومات",
+        "manager":    "ياسر عرفات",
+        "leave_type": "الإجازة السنوية",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "قضاء وقت مع العائلة",
+        "status":     "pending"
+      },
+      "finalJson": {
+        "employee":   "هيرماني",
+        "department": "تكنولوجيا المعلومات",
+        "manager":    "ياسر عرفات",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "قضاء وقت مع العائلة",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    }
+  ]
+}

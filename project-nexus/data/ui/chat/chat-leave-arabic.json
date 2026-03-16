@@ -1,0 +1,73 @@
+{
+  "prod": [
+    {
+      "users": {
+        "admin": {
+          "username": "demo",
+          "password": "demo1234"
+        }
+      },
+      "name": "UI - Arabic RTL input direction switches @ui @arabic @rtl",
+      "tags": ["ui", "arabic", "rtl"],
+      "maxTurns": 15,
+      "notes": "Validates that Arabic input triggers RTL direction switch in the chat input. Lang badge should show 'عربي' after AI responds in Arabic.",
+      "initialRequest": "أريد تقديم طلب إجازة سنوية",
+      "inputJson": {
+        "employee":   "هيرماني",
+        "department": "تكنولوجيا المعلومات",
+        "manager":    "ياسر عرفات",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "قضاء وقت مع العائلة",
+        "status":     "pending"
+      },
+      "finalJson": {
+        "employee":   "هيرماني",
+        "department": "تكنولوجيا المعلومات",
+        "manager":    "ياسر عرفات",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "قضاء وقت مع العائلة",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    },
+
+    {
+      "users": {
+        "admin": {
+          "username": "demo",
+          "password": "demo1234"
+        }
+      },
+      "name": "UI - Arabic suggestion chip triggers correct flow @ui @arabic @suggestion",
+      "tags": ["ui", "arabic", "suggestion"],
+      "maxTurns": 15,
+      "notes": "Clicks the Arabic suggestion chip 'طلب إجازة' on the empty state. Validates chip sends correct Arabic initialRequest and flow continues normally.",
+      "initialRequest": "أريد تقديم طلب إجازة",
+      "inputJson": {
+        "employee":   "هيرماني",
+        "department": "تكنولوجيا المعلومات",
+        "manager":    "ياسر عرفات",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "إجازة عائلية",
+        "status":     "pending"
+      },
+      "finalJson": {
+        "employee":   "هيرماني",
+        "department": "تكنولوجيا المعلومات",
+        "manager":    "ياسر عرفات",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "إجازة عائلية",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    }
+  ]
+}

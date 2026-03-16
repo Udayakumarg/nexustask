@@ -1,0 +1,118 @@
+{
+  "prod": [
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Boundary - Max length reason field English @boundary @maxlength @english",
+      "tags": ["boundary", "maxlength", "english"],
+      "maxTurns": 12,
+      "notes": "Reason field with 250+ characters. Tests that AI accepts and preserves long free-text values without truncation or hallucination.",
+      "initialRequest": "I want to apply for leave. Alice, Engineering, Bob, Annual",
+      "inputJson": {
+        "employee":   "Alice",
+        "department": "Engineering",
+        "manager":    "Bob",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "Extended family vacation to visit relatives in the United Kingdom including London and Edinburgh covering multiple family events such as a wedding anniversary celebration and a graduation ceremony for a close family member who has completed their doctoral degree",
+        "status":     "pending"
+      },
+      "finalJson": {
+        "employee":   "Alice",
+        "department": "Engineering",
+        "manager":    "Bob",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "Extended family vacation to visit relatives in the United Kingdom including London and Edinburgh covering multiple family events such as a wedding anniversary celebration and a graduation ceremony for a close family member who has completed their doctoral degree",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Boundary - Special characters in reason English @boundary @special @english",
+      "tags": ["boundary", "special", "english"],
+      "maxTurns": 12,
+      "notes": "Reason contains special characters: quotes, ampersands, slashes. Tests that AI preserves exact user input without escaping or modifying.",
+      "initialRequest": "Leave request. Alice, Engineering, Bob, Annual",
+      "inputJson": {
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "Family & friends reunion — celebrating 10th anniversary (father's birthday + mother's retirement)",
+        "status":     "pending"
+      },
+      "finalJson": {
+        "employee":   "Alice",
+        "department": "Engineering",
+        "manager":    "Bob",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "Family & friends reunion — celebrating 10th anniversary (father's birthday + mother's retirement)",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Boundary - Max length reason Arabic @boundary @maxlength @arabic",
+      "tags": ["boundary", "maxlength", "arabic"],
+      "maxTurns": 12,
+      "notes": "Long Arabic reason text 200+ chars. Tests that Arabic free_text fields are preserved exactly — key validation for R_ARABIC_JSON fix.",
+      "initialRequest": "أريد تقديم طلب إجازة سنوية. هيرماني، تكنولوجيا المعلومات، ياسر عرفات",
+      "inputJson": {
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "إجازة عائلية ممتدة لزيارة الأقارب في المملكة العربية السعودية والمشاركة في حفل زفاف أحد أفراد العائلة وحضور تخرج ابن أخي من الجامعة وقضاء وقت ممتع مع الأهل والأحباء",
+        "status":     "pending"
+      },
+      "finalJson": {
+        "employee":   "هيرماني",
+        "department": "تكنولوجيا المعلومات",
+        "manager":    "ياسر عرفات",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "إجازة عائلية ممتدة لزيارة الأقارب في المملكة العربية السعودية والمشاركة في حفل زفاف أحد أفراد العائلة وحضور تخرج ابن أخي من الجامعة وقضاء وقت ممتع مع الأهل والأحباء",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    },
+
+    {
+      "username": "demo",
+      "password": "demo1234",
+      "name": "Boundary - Special characters in Arabic input @boundary @special @arabic",
+      "tags": ["boundary", "special", "arabic"],
+      "maxTurns": 12,
+      "notes": "Arabic input with special characters: brackets, numbers, mixed punctuation. Tests free_text preservation with complex Arabic content.",
+      "initialRequest": "طلب إجازة. هيرماني، تكنولوجيا المعلومات، ياسر عرفات، إجازة سنوية",
+      "inputJson": {
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "حضور مؤتمر (تقنية المعلومات 2026) + زيارة عائلية — 30 يوم",
+        "status":     "pending"
+      },
+      "finalJson": {
+        "employee":   "هيرماني",
+        "department": "تكنولوجيا المعلومات",
+        "manager":    "ياسر عرفات",
+        "leave_type": "Annual",
+        "start_date": "20-Mar-2026",
+        "end_date":   "20-Apr-2026",
+        "reason":     "حضور مؤتمر (تقنية المعلومات 2026) + زيارة عائلية — 30 يوم",
+        "status":     "pending"
+      },
+      "expectedReferenceIdPrefix": "LVE"
+    }
+  ]
+}
