@@ -1,6 +1,6 @@
 # NEXUS AI — Automated Test Suite (D2)
 
-> QA Lead Design Challenge — Abu Dhabi Government  
+> QA Lead Design Challenge
 > Framework: `simple-playwright-framework` (candidate's own npm package)  
 > Live system: https://nexus-ai-wn4h.onrender.com
 
